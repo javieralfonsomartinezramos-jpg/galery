@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#21131b">
+    <title>Galeria de recuerdos</title>
+    <link rel="stylesheet" href="stiles.css">
+    <script>
+        document.documentElement.classList.add("js-enabled");
+    </script>
+</head>
+<body>
+    <div class="page-ambient" aria-hidden="true"></div>
+
+    <main class="romance-shell">
+        <section class="hero-section" data-reveal>
+            <div class="hero-copy">
+                <p class="hero-eyebrow">Un lugar para sentirte cerca</p>
+                <h1>Mis recuerdos favoritos de ti</h1>
+                <p>
+                    Una galeria hecha para mirar despacio: tus fotos, canciones y pequenos instantes
+                    que me acercan a ti aunque estemos lejos.
+                </p>
+
+                <div class="hero-actions" aria-label="Acciones principales">
+                    <button class="romance-action romance-action--primary" type="button" data-random-photo>
+                        Abrir una sorpresa
+                    </button>
+                    <button class="romance-action" type="button" data-scroll-to="favoritas">
+                        Ver mis favoritas
+                    </button>
+                    <button class="romance-action" type="button" data-player-focus>
+                        Escuchar algo bonito
+                    </button>
+                </div>
+            </div>
+
+            <section class="music-player" data-player aria-label="Reproductor de musica">
+                <div class="player-cover-wrap">
+                    <img
+                        class="player-cover"
+                        data-player-cover
+                        src="image/superfavorita1.jpg"
+                        alt="Portada de la cancion"
+                        draggable="false"
+                    >
+                    <div class="player-equalizer" data-equalizer aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+
+                <div class="player-content">
+                    <p class="player-kicker">Ahora sonando</p>
+                    <h2 class="player-title" data-player-title>My Favorite Part</h2>
+                    <p class="player-artist" data-player-artist>Mac Miller ft. Ariana Grande</p>
+
+                    <div class="player-progress-row">
+                        <span class="player-time" data-current-time>0:00</span>
+                        <input
+                            class="player-progress"
+                            data-player-progress
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="0"
+                            aria-label="Progreso de la cancion"
+                        >
+                        <span class="player-time" data-duration>0:00</span>
+                    </div>
+
+                    <div class="player-controls" role="group" aria-label="Controles de musica">
+                        <button class="player-button player-button--ghost player-button--mode" type="button" data-shuffle-toggle aria-label="Aleatorio" aria-pressed="false" title="Aleatorio">
+                            &#128256;
+                        </button>
+                        <button class="player-button player-button--ghost" type="button" data-prev-track aria-label="Cancion anterior">
+                            &#9198;
+                        </button>
+                        <button class="player-button player-button--play" type="button" data-play-toggle aria-label="Reproducir">
+                            <span data-play-icon>&#9658;</span>
+                        </button>
+                        <button class="player-button player-button--ghost" type="button" data-next-track aria-label="Siguiente cancion">
+                            &#9197;
+                        </button>
+                        <button class="player-button player-button--ghost player-button--mode" type="button" data-repeat-one aria-label="Repetir cancion" aria-pressed="false" title="Repetir cancion">
+                            &#128257;<span class="player-button-mark">1</span>
+                        </button>
+                        <button class="player-button player-button--ghost player-button--mode" type="button" data-repeat-list aria-label="Repetir lista" aria-pressed="true" title="Repetir lista">
+                            &#128257;
+                        </button>
+                    </div>
+
+                    <div class="player-status">
+                        <span class="player-pill" data-player-status aria-live="polite">Lista para sonar</span>
+                        <div class="player-volume-group" role="group" aria-label="Controles de volumen">
+                            <button class="player-button player-button--ghost player-button--mini" type="button" data-mute-toggle aria-label="Silenciar" aria-pressed="false" title="Silenciar">
+                                <span data-mute-icon>&#128266;</span>
+                            </button>
+                            <label class="volume-control">
+                                <span class="sr-only">Volumen</span>
+                                <input data-volume type="range" min="0" max="1" step="0.01" value="0.76" aria-label="Volumen">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="player-playlist" data-playlist aria-label="Lista de canciones"></div>
+                </div>
+
+                <audio data-audio preload="auto"></audio>
+            </section>
+        </section>
+
+        <section class="love-note-section" data-reveal>
+            <div class="love-note-card">
+                <p class="love-note-kicker">Una dedicatoria para ti</p>
+                <h2>Esto lo hice para que recordaras lo hermosa que eres.</h2>
+                <p>
+                    Para que cada vez que abras esta pagina encuentres una foto, una cancion
+                    o una frase que te recuerde que eres mi lugar bonito, incluso en la distancia.
+                </p>
+            </div>
+
+            <div class="function-grid" aria-label="Espacios funcionales">
+                <article class="function-card">
+                    <span class="function-number">01</span>
+                    <h3>Modo sorpresa</h3>
+                    <p>Abre una foto al azar y deja que el recuerdo aparezca solo.</p>
+                    <button class="function-button" type="button" data-random-photo>
+                        Sorprendeme
+                    </button>
+                </article>
+
+                <article class="function-card">
+                    <span class="function-number">02</span>
+                    <h3>Camino rapido</h3>
+                    <p>Salta directo a las secciones que hice con mas cuidado para ti.</p>
+                    <div class="function-links">
+                        <button type="button" data-scroll-to="recuerdos">Recuerdos</button>
+                        <button type="button" data-scroll-to="favoritas">Favoritas</button>
+                        <button type="button" data-scroll-to="ti">De ti</button>
+                        <button type="button" data-scroll-to="notas">Notas</button>
+                    </div>
+                </article>
+
+                <article class="function-card">
+                    <span class="function-number">03</span>
+                    <h3>Fotos guardadas</h3>
+                    <p>Marca con corazon las fotos que quieras volver a encontrar.</p>
+                    <span class="saved-counter" data-saved-counter>0 fotos guardadas</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="notes-section" id="notas" data-reveal aria-labelledby="notes-title">
+            <header class="gallery-header gallery-header--split">
+                <div>
+                    <p class="gallery-eyebrow">Notas guardadas</p>
+                    <h3 class="gallery-title" id="notes-title">Mensajes que se quedan</h3>
+                </div>
+                <p class="gallery-description">
+                    Un espacio para dejar notas pequenas, promesas o pensamientos que quieras conservar
+                    cada vez que vuelvas a esta pagina.
+                </p>
+            </header>
+
+            <form class="notes-form" data-notes-form>
+                <label class="sr-only" for="note-input">Escribe una nota</label>
+                <textarea id="note-input" data-note-input rows="4" maxlength="420" placeholder="Escribe una nota bonita..."></textarea>
+                <div class="notes-actions">
+                    <span class="notes-status" data-notes-status>Guardado permanente en este navegador</span>
+                    <button class="function-button" type="submit">Guardar nota</button>
+                </div>
+            </form>
+
+            <div class="notes-list" data-notes-list aria-live="polite"></div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!--                    GALERIA DE RECUERDOS                    -->
+        <!-- ========================================================= -->
+
+        <section class="gallery-section gallery-section--memories letter-section letter-section--accent" id="recuerdos" data-gallery data-reveal>
+            <header class="gallery-header">
+                <p class="gallery-eyebrow">Recuerdos de ti</p>
+                <h3 class="gallery-title">Cada foto guarda un pedacito de lo que siento por ti</h3>
+                <p class="gallery-description">
+                    Hay fotos que me hacen sentirte cerquita aunque estemos lejos. Algunas viven en mi memoria
+                    y otras viven aqui, esperando a que vuelvas a encontrarlas.
+                </p>
+            </header>
+
+            <div class="gallery-grid gallery-grid--memories" data-gallery-grid="memories"></div>
+
+            <footer class="gallery-footer">
+                <p class="gallery-message">Para mi siempre seras la mujer mas bella.</p>
+
+                <div class="gallery-tags" aria-label="Palabras bonitas">
+                    <span class="gallery-tag">Hermosa</span>
+                    <span class="gallery-tag">Linda</span>
+                    <span class="gallery-tag">Preciosa</span>
+                    <span class="gallery-tag">Guapa</span>
+                    <span class="gallery-tag">Bonita</span>
+                    <span class="gallery-tag">Agraciada</span>
+                    <span class="gallery-tag">Atractiva</span>
+                    <span class="gallery-tag">Apuesta</span>
+                    <span class="gallery-tag">Escultural</span>
+                    <span class="gallery-tag">Elegante</span>
+                    <span class="gallery-tag">Fina</span>
+                    <span class="gallery-tag">Esplendida</span>
+                    <span class="gallery-tag">Divina</span>
+                    <span class="gallery-tag">Sublime</span>
+                    <span class="gallery-tag">Majestuosa</span>
+                    <span class="gallery-tag">Arrebatadora</span>
+                    <span class="gallery-tag">Deslumbrante</span>
+                    <span class="gallery-tag">Radiante</span>
+                    <span class="gallery-tag">Exquisita</span>
+                    <span class="gallery-tag">Encantadora</span>
+                </div>
+            </footer>
+        </section>
+
+        <section class="gallery-section gallery-section--favorite-photos" id="favoritas" data-gallery data-reveal>
+            <header class="gallery-header gallery-header--split">
+                <div>
+                    <p class="gallery-eyebrow">&#10084;&#65039; Mis fotos favoritas</p>
+                    <h3 class="gallery-title">Las que se sienten como una pelicula bonita</h3>
+                </div>
+                <p class="gallery-description">
+                    Esta seleccion se actualiza sola con las fotos que marques con corazon.
+                    Asi siempre quedan juntas las que quieras volver a mirar primero.
+                </p>
+            </header>
+
+            <div class="gallery-grid gallery-grid--favorites" data-gallery-grid="favorites"></div>
+        </section>
+
+        <section class="gallery-section gallery-section--favorite-you" id="ti" data-gallery data-reveal>
+            <header class="gallery-header gallery-header--centered">
+                <p class="gallery-eyebrow">&#129392; Mis favoritas de ti</p>
+                <h3 class="gallery-title">Cuando la foto no alcanza para tanta ternura</h3>
+                <p class="gallery-description">
+                    Un rincon mas suave, mas cercano y mas tuyo. Aqui aparecen automaticamente
+                    las imagenes marcadas como especiales.
+                </p>
+            </header>
+
+            <div class="gallery-grid gallery-grid--tender" data-gallery-grid="tender"></div>
+        </section>
+    </main>
+
+    <!-- ========================================================= -->
+    <!--                     VISOR DE IMAGENES                      -->
+    <!-- ========================================================= -->
+
+    <div class="gallery-lightbox" data-gallery-lightbox hidden>
+        <div class="gallery-backdrop" data-gallery-close></div>
+
+        <div class="gallery-container" role="dialog" aria-modal="true" aria-labelledby="gallery-view-title" aria-describedby="gallery-view-description">
+            <button class="gallery-close" type="button" aria-label="Cerrar galeria" data-gallery-close>
+                &#10005;
+            </button>
+
+            <button class="gallery-prev" type="button" aria-label="Anterior" data-gallery-prev>
+                &#10094;
+            </button>
+
+            <div class="gallery-preview-wrapper" data-gallery-swipe>
+                <img
+                    class="gallery-preview"
+                    data-gallery-preview
+                    src=""
+                    alt=""
+                    draggable="false"
+                >
+            </div>
+
+            <button class="gallery-next" type="button" aria-label="Siguiente" data-gallery-next>
+                &#10095;
+            </button>
+
+            <div class="gallery-details">
+                <span class="gallery-counter" data-gallery-counter aria-live="polite">1 / 20</span>
+                <h3 class="gallery-view-title" id="gallery-view-title" data-gallery-title></h3>
+                <p class="gallery-view-description" id="gallery-view-description" data-gallery-description></p>
+            </div>
+
+            <div class="gallery-tools" role="group" aria-label="Zoom de imagen">
+                <button type="button" data-gallery-zoom-out aria-label="Alejar imagen" title="Alejar">-</button>
+                <button type="button" data-gallery-zoom-reset aria-label="Restablecer zoom" title="Restablecer zoom" data-gallery-zoom-label>100%</button>
+                <button type="button" data-gallery-zoom-in aria-label="Acercar imagen" title="Acercar">+</button>
+            </div>
+
+            <div class="gallery-progress" data-gallery-progress-wrap role="progressbar" aria-label="Progreso de la galeria" aria-valuemin="1" aria-valuemax="1" aria-valuenow="1">
+                <div class="gallery-progress-bar" data-gallery-progress></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="love-toast" data-toast hidden></div>
+
+    <script src=".js"></script>
+</body>
+</html>
