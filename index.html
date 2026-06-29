@@ -6,9 +6,7 @@
     <meta name="theme-color" content="#21131b">
     <title>Galeria de recuerdos</title>
     <link rel="stylesheet" href="stiles.css">
-    <script>
-        document.documentElement.classList.add("js-enabled");
-    </script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="page-ambient" aria-hidden="true"></div>
@@ -75,22 +73,22 @@
 
                     <div class="player-controls" role="group" aria-label="Controles de musica">
                         <button class="player-button player-button--ghost player-button--mode" type="button" data-shuffle-toggle aria-label="Aleatorio" aria-pressed="false" title="Aleatorio">
-                            &#128256;
+                            <span class="player-icon" aria-hidden="true">&#8644;</span>
                         </button>
                         <button class="player-button player-button--ghost" type="button" data-prev-track aria-label="Cancion anterior">
-                            &#9198;
+                            <span class="player-icon" aria-hidden="true">&#9664;&#9664;</span>
                         </button>
                         <button class="player-button player-button--play" type="button" data-play-toggle aria-label="Reproducir">
-                            <span data-play-icon>&#9658;</span>
+                            <span class="player-icon" data-play-icon aria-hidden="true">&#9658;</span>
                         </button>
                         <button class="player-button player-button--ghost" type="button" data-next-track aria-label="Siguiente cancion">
-                            &#9197;
+                            <span class="player-icon" aria-hidden="true">&#9654;&#9654;</span>
                         </button>
                         <button class="player-button player-button--ghost player-button--mode" type="button" data-repeat-one aria-label="Repetir cancion" aria-pressed="false" title="Repetir cancion">
-                            &#128257;<span class="player-button-mark">1</span>
+                            <span class="player-icon" aria-hidden="true">&#8635;</span><span class="player-button-mark" aria-hidden="true">1</span>
                         </button>
                         <button class="player-button player-button--ghost player-button--mode" type="button" data-repeat-list aria-label="Repetir lista" aria-pressed="true" title="Repetir lista">
-                            &#128257;
+                            <span class="player-icon" aria-hidden="true">&#8635;</span>
                         </button>
                     </div>
 
@@ -98,7 +96,7 @@
                         <span class="player-pill" data-player-status aria-live="polite">Lista para sonar</span>
                         <div class="player-volume-group" role="group" aria-label="Controles de volumen">
                             <button class="player-button player-button--ghost player-button--mini" type="button" data-mute-toggle aria-label="Silenciar" aria-pressed="false" title="Silenciar">
-                                <span data-mute-icon>&#128266;</span>
+                                <span class="player-icon" data-mute-icon aria-hidden="true">&#128266;</span>
                             </button>
                             <label class="volume-control">
                                 <span class="sr-only">Volumen</span>
@@ -302,6 +300,5 @@
 
     <div class="love-toast" data-toast hidden></div>
 
-    <script src=".js"></script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 (() => {
     "use strict";
 
+    document.documentElement.classList.add("js-enabled");
+
     const STORAGE_KEYS = {
         savedPhotos: "romanceSavedPhotos",
         player: "romancePlayerState",
@@ -15,6 +17,7 @@
 
     let toastTimer = null;
     let favoritePhotos = readSavedPhotos();
+    const bootFailSafe = window.setTimeout(revealPageWithoutAnimation, 3200);
 
     const photoCatalog = [
         photo("image/foto1.jpg", "El comienzo bonito", "Una foto que me hace sentirte cerca, incluso desde lejos.", "Recuerdo"),
@@ -60,7 +63,7 @@
         {
             title: "Reina Pepiada",
             artist: "Alvaro Diaz",
-            src: "music/\u00c1lvaroD\u00edaz-ReinaPepiada.mp3",
+            src: "music/AlvaroDiaz-ReinaPepiada.mp3",
             cover: "image/foto11.jpg"
         },
         {
@@ -72,7 +75,7 @@
         {
             title: "Dutty Love",
             artist: "Don Omar & Natti Natasha",
-            src: "music/Dutty Love.mp3",
+            src: "music/Dutty-Love.mp3",
             cover: "image/favorita4.jpg"
         },
         {
@@ -102,7 +105,7 @@
         {
             title: "A Mi",
             artist: "Rels B",
-            src: "music/A-M\u00ed.mp3",
+            src: "music/A-Mi.mp3",
             cover: "image/superfavorita2.jpg"
         },
         {
@@ -114,15 +117,30 @@
     ];
 
     document.addEventListener("DOMContentLoaded", () => {
-        renderAllGalleries();
-        setupRevealAnimations();
-        setupGalleryLightbox();
-        setupMusicPlayer();
-        setupExperienceActions();
-        setupNotes();
-        updateSavedCounter();
-        preloadInitialImages();
+        try {
+            renderAllGalleries();
+            setupRevealAnimations();
+            setupGalleryLightbox();
+            setupMusicPlayer();
+            setupExperienceActions();
+            setupNotes();
+            updateSavedCounter();
+            preloadInitialImages();
+            document.documentElement.classList.add("app-ready");
+            window.clearTimeout(bootFailSafe);
+        } catch (error) {
+            console.error(error);
+            revealPageWithoutAnimation();
+        }
     });
+
+    function revealPageWithoutAnimation() {
+        window.clearTimeout(bootFailSafe);
+        document.documentElement.classList.remove("js-enabled");
+        document.querySelectorAll("[data-reveal]").forEach((element) => {
+            element.classList.add("is-visible");
+        });
+    }
 
     function photo(src, title, subtitle, badge, special = false) {
         return {
@@ -867,7 +885,7 @@
             player.classList.toggle("is-playing", isPlaying);
 
             if (playIcon) {
-                playIcon.textContent = isPlaying ? "||" : "\u25b6";
+                playIcon.textContent = isPlaying ? "\u275A\u275A" : "\u25b6";
             }
 
             if (playButton) {
@@ -917,6 +935,14 @@
                 button.type = "button";
                 button.dataset.trackIndex = String(index);
                 button.setAttribute("aria-label", `Reproducir ${track.title}`);
+                button.title = `${track.title} - ${track.artist}`;
+
+                const trackNumber = document.createElement("span");
+                trackNumber.className = "playlist-track-number";
+                trackNumber.textContent = String(index + 1).padStart(2, "0");
+
+                const trackCopy = document.createElement("span");
+                trackCopy.className = "playlist-track-copy";
 
                 const trackTitle = document.createElement("span");
                 trackTitle.className = "playlist-track-title";
@@ -926,7 +952,8 @@
                 trackArtist.className = "playlist-track-artist";
                 trackArtist.textContent = track.artist;
 
-                button.append(trackTitle, trackArtist);
+                trackCopy.append(trackTitle, trackArtist);
+                button.append(trackNumber, trackCopy);
                 button.addEventListener("click", () => {
                     shuffleHistory.push(trackIndex);
                     trackIndex = index;
